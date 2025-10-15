@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Test Proxy LibreLinkUp</title>
-<style>
-  body{font-family:sans-serif;background:#f7f7f7;text-align:center;margin:40px}
-  input,button{padding:10px;margin:5px;border-radius:8px;border:1px solid #ccc;width:250px}
-  button{background:#81D8D0;color:#fff;border:none;cursor:pointer}
-  pre{background:#fff;padding:10px;border-radius:10px;max-width:90%;margin:auto;text-align:left;overflow:auto}
-</style>
-</head>
-<body>
-
-<h2>🔍 Test connexion Proxy LibreLinkUp</h2>
-<p>Entre ton email et ton mot de passe LibreLinkUp, puis clique sur “Tester”.</p>
-
-<input id="email" placeholder="Email LibreLinkUp"><br>
-<input id="password" type="password" placeholder="Mot de passe"><br>
-<button onclick="testProxy()">Tester</button>
-
-<h3>Résultat :</h3>
-<pre id="result">...</pre>
-
 <script>
-const PROXY_URL = "https://glycemie-proxy.onrender.com"; // ← change ici si ton proxy a un autre lien
+const PROXY_URL = "https://glycemie-proxy.onrender.com"; // ton proxy
 
 async function testProxy(){
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const email = "samybelkessam@live.fr"; // ← ton email LibreLinkUp
+  const password = "Comptediabete1.";   // ← ton mot de passe LibreLinkUp
   document.getElementById("result").textContent = "Connexion en cours...";
   try{
     const res = await fetch(`${PROXY_URL}/llu/auth/login`, {
@@ -44,7 +19,6 @@ async function testProxy(){
       "Erreur réseau :\n" + e.message;
   }
 }
-</script>
 
-</body>
-</html>
+window.onload = testProxy; // lance automatiquement le test au chargement
+</script>
